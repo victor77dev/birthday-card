@@ -11,7 +11,7 @@ const turnOff = () => {
     track.stop();
 }
 
-const turnOn = () => {
+const _turnOn = () => {
     console.log('Turn On')
     if (!SUPPORTS_MEDIA_DEVICES) {
         console.error('mediaDevices is not supported.');
@@ -46,9 +46,25 @@ const turnOn = () => {
     });
 }
 
+const turnOn = (duration) => {
+    setTimeout(() => {
+        turnOff();
+    }, duration);
+    _turnOn();
+}
+
+const lightSeq = (times) => {
+    for (let i = 0; i < times.length; i++) {
+        const [start, duration] = times[i];
+        setTimeout(() => {
+            turnOn(duration * 1000);
+        }, start * 1000)
+    }
+}
 
 export const Torch = {
     isOff,
+    lightSeq,
     turnOff,
     turnOn,
 };
