@@ -1,7 +1,15 @@
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
+let track;
 let torchOff = true;
 
 const isOff = () => torchOff;
+
+const turnOff = () => {
+    console.log('Turn Off')
+    if (torchOff || !track) return;
+    torchOff = true;
+    track.stop();
+}
 
 const turnOn = () => {
     console.log('Turn On')
@@ -24,7 +32,7 @@ const turnOn = () => {
         debugVideo.srcObject = stream;
         debugVideo.play();
 
-        const track = stream.getVideoTracks()[0];
+        track = stream.getVideoTracks()[0];
         const imageCapture = new ImageCapture(track)
         imageCapture.getPhotoCapabilities().then(() => {
             track.applyConstraints({
@@ -41,5 +49,6 @@ const turnOn = () => {
 
 export const Torch = {
     isOff,
+    turnOff,
     turnOn,
 };
