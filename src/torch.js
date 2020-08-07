@@ -1,4 +1,7 @@
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
+let torchOff = true;
+
+const isOff = () => torchOff;
 
 const turnOn = () => {
     console.log('Turn On')
@@ -6,6 +9,9 @@ const turnOn = () => {
         console.error('mediaDevices is not supported.');
         return null;
     }
+
+    if (!torchOff) return;
+    torchOff = false;
 
     navigator.mediaDevices.getUserMedia({
         video: {
@@ -32,6 +38,8 @@ const turnOn = () => {
     });
 }
 
+
 export const Torch = {
+    isOff,
     turnOn,
 };
