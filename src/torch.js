@@ -14,6 +14,9 @@ const turnOn = () => {
             width: {ideal: 1280},
         },
     }).then((stream) => {
+        const debugVideo = document.querySelector('#camera');
+        debugVideo.srcObject = stream;
+        debugVideo.play();
 
         const track = stream.getVideoTracks()[0];
         const imageCapture = new ImageCapture(track)
