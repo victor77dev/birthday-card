@@ -9,6 +9,16 @@ function enableScreenLog() {
 
 function runTorch() {
     Torch.turnOn();
+    Torch.turnOff();
+    Torch.lightSeq([
+        [2, 3],
+        [7, 2],
+        [10, 2],
+        [13, 2],
+        [16, 2],
+        [20, 2],
+        [24, 2],
+    ])
 }
 
 function startVideo() {
