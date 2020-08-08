@@ -33,7 +33,7 @@ const _turnOn = () => {
         debugVideo.play();
 
         track = stream.getVideoTracks()[0];
-        const imageCapture = new ImageCapture(track)
+        const imageCapture = new ImageCapture(track);
         imageCapture.getPhotoCapabilities().then(() => {
             track.applyConstraints({
                 advanced: [{torch: true}]
