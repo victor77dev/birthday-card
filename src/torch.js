@@ -33,6 +33,9 @@ const _turnOn = () => {
         debugVideo.play();
 
         track = stream.getVideoTracks()[0];
+        console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
+        console.log('Settings: ' + JSON.stringify(track.getSettings()));
+
         const imageCapture = new ImageCapture(track);
         imageCapture.getPhotoCapabilities().then(() => {
             track.applyConstraints({
@@ -41,6 +44,8 @@ const _turnOn = () => {
                 console.log('start torch success')
             }).catch((error) => {
                 console.log('applyConstraints error: ' + JSON.stringify(error.message))
+                console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
+                console.log('Settings: ' + JSON.stringify(track.getSettings()));
             });
         });
     });
