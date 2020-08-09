@@ -23,7 +23,12 @@ function runTorch() {
 
 function startVideo() {
     const video = document.querySelector('#video');
-    video.requestFullscreen();
+    const isIOS = !video.requestFullscreen;
+    if (isIOS) {
+        video.webkitEnterFullscreen();
+    } else {
+        video.requestFullscreen();
+    }
     video.play();
     runTorch();
 }
