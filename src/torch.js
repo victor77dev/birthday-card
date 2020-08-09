@@ -1,19 +1,31 @@
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
-let tracks;
-let torchOff = true;
+let tracks = {};
 let trackId = 0;
+window.tracks = tracks;
+
+let torchOff = true;
 
 const isOff = () => torchOff;
 
 const turnOff = (id) => {
-    console.log('Turn Off')
+    console.log('Turn Off', id)
+    const track = tracks[id];
     if (torchOff || !track) return;
     torchOff = true;
-    tracks[id].stop();
+    console.log(track)
+    console.log(track.enabled, track.readyState)
+    track.stop();
+    console.log(track.enabled, track.readyState)
+    setTimeout(() => {
+        console.log('after 2s')
+        console.log(track.enabled, track.readyState)
+        track.stop();
+        console.log(track.enabled, track.readyState)
+    }, 2000);
 }
 
 const _turnOn = () => {
-    console.log('Turn On')
+    console.log('Turn On', trackId)
     if (!SUPPORTS_MEDIA_DEVICES) {
         console.error('mediaDevices is not supported.');
         return null;
@@ -22,7 +34,7 @@ const _turnOn = () => {
     if (!torchOff) return;
     torchOff = false;
 
-    navigator.mediaDevices.getUserMedia({
+    return navigator.mediaDevices.getUserMedia({
         video: {
             facingMode: {exact: 'environment'},
             height: {ideal: 720},
@@ -51,18 +63,18 @@ const _turnOn = () => {
                 console.log('Settings: ' + JSON.stringify(track.getSettings()));
             });
         });
-    });
 
-    return trackId++;
+        return trackId++;
+    });
 }
 
 const turnOn = (duration) => {
-    let trackId = null;
-    setTimeout(() => {
-        turnOff(trackId);
-    }, duration);
-    trackId = _turnOn();
-    console.log(trackId)
+    _turnOn().then((id) => {
+        console.log(id)
+        setTimeout(() => {
+            turnOff(id);
+        }, duration);
+    })
 }
 
 const lightSeq = (times) => {
