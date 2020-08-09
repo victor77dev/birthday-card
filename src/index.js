@@ -8,8 +8,8 @@ function enableScreenLog() {
 }
 
 function runTorch() {
-    Torch.turnOn();
-    Torch.turnOff();
+    // Torch.turnOn();
+    // Torch.turnOff();
     Torch.lightSeq([
         [2, 3],
         [7, 0.2],
