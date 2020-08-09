@@ -45,6 +45,7 @@ const _turnOn = () => {
         debugVideo.play();
 
         tracks[trackId] = stream.getVideoTracks()[0];
+        torchOff = false;
 
         const track = tracks[trackId];
         console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
@@ -56,7 +57,6 @@ const _turnOn = () => {
                 advanced: [{torch: true}]
             }).then(() => {
                 console.log('start torch success')
-                torchOff = false;
                 return Promise.resolve(trackId++);
             }).catch((error) => {
                 console.log('applyConstraints error: ' + JSON.stringify(error.message))
