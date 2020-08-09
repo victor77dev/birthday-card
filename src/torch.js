@@ -19,8 +19,8 @@ const turnOff = (id) => {
     setTimeout(() => {
         console.log('after 2s')
         console.log(track.enabled, track.readyState)
-        track.stop();
-        console.log(track.enabled, track.readyState)
+        // track.stop();
+        // console.log(track.enabled, track.readyState)
     }, 2000);
 }
 
