@@ -31,8 +31,7 @@ const _turnOn = () => {
         return null;
     }
 
-    if (!torchOff) return;
-    torchOff = false;
+    if (!torchOff) return Promise.reject('Torch is on');
 
     return navigator.mediaDevices.getUserMedia({
         video: {
@@ -52,19 +51,20 @@ const _turnOn = () => {
         console.log('Settings: ' + JSON.stringify(track.getSettings()));
 
         const imageCapture = new ImageCapture(track);
-        imageCapture.getPhotoCapabilities().then(() => {
+        return imageCapture.getPhotoCapabilities().then(() => {
             track.applyConstraints({
                 advanced: [{torch: true}]
             }).then(() => {
                 console.log('start torch success')
+                torchOff = false;
+                return Promise.resolve(trackId++);
             }).catch((error) => {
                 console.log('applyConstraints error: ' + JSON.stringify(error.message))
                 console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
                 console.log('Settings: ' + JSON.stringify(track.getSettings()));
+                return Promise.reject(trackId++);
             });
         });
-
-        return trackId++;
     });
 }
 
@@ -74,6 +74,8 @@ const turnOn = (duration) => {
         setTimeout(() => {
             turnOff(id);
         }, duration);
+    }).catch((error) => {
+        console.log('_turnOn failed!', error)
     })
 }
 
