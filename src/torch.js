@@ -1,27 +1,28 @@
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
-let track;
+let tracks = {};
+let trackId = 0;
+
 let torchOff = true;
 
 const isOff = () => torchOff;
 
-const turnOff = () => {
-    console.log('Turn Off')
-    if (torchOff || !track) return;
+const turnOff = (id) => {
+    console.log('Turn Off', id)
+    const track = tracks[id];
+    if (!track) return;
     torchOff = true;
     track.stop();
 }
 
 const _turnOn = () => {
-    console.log('Turn On')
+    console.log('Turn On', trackId)
     if (!SUPPORTS_MEDIA_DEVICES) {
-        console.error('mediaDevices is not supported.');
-        return null;
+        return Promise.reject('mediaDevices is not supported.');
     }
 
-    if (!torchOff) return;
-    torchOff = false;
+    if (!torchOff) return Promise.reject('Torch is on!');
 
-    navigator.mediaDevices.getUserMedia({
+    return navigator.mediaDevices.getUserMedia({
         video: {
             facingMode: {exact: 'environment'},
             height: {ideal: 720},
@@ -32,30 +33,38 @@ const _turnOn = () => {
         debugVideo.srcObject = stream;
         debugVideo.play();
 
-        track = stream.getVideoTracks()[0];
+        tracks[trackId] = stream.getVideoTracks()[0];
+
+        const track = tracks[trackId];
         console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
         console.log('Settings: ' + JSON.stringify(track.getSettings()));
 
         const imageCapture = new ImageCapture(track);
-        imageCapture.getPhotoCapabilities().then(() => {
-            track.applyConstraints({
+        return imageCapture.getPhotoCapabilities().then(() => {
+            return track.applyConstraints({
                 advanced: [{torch: true}]
             }).then(() => {
                 console.log('start torch success')
+                torchOff = false;
+                return Promise.resolve(trackId++);
             }).catch((error) => {
                 console.log('applyConstraints error: ' + JSON.stringify(error.message))
                 console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
                 console.log('Settings: ' + JSON.stringify(track.getSettings()));
+                track.stop();
+                return Promise.reject(trackId);
             });
         });
     });
 }
 
 const turnOn = (duration) => {
-    setTimeout(() => {
-        turnOff();
-    }, duration);
-    _turnOn();
+    _turnOn().then((id) => {
+        console.log(id)
+        setTimeout(() => {
+            turnOff(id);
+        }, duration);
+    })
 }
 
 const lightSeq = (times) => {
