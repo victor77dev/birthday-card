@@ -1,14 +1,15 @@
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
-let track;
+let tracks;
 let torchOff = true;
+let trackId = 0;
 
 const isOff = () => torchOff;
 
-const turnOff = () => {
+const turnOff = (id) => {
     console.log('Turn Off')
     if (torchOff || !track) return;
     torchOff = true;
-    track.stop();
+    tracks[id].stop();
 }
 
 const _turnOn = () => {
@@ -32,7 +33,9 @@ const _turnOn = () => {
         debugVideo.srcObject = stream;
         debugVideo.play();
 
-        track = stream.getVideoTracks()[0];
+        tracks[trackId] = stream.getVideoTracks()[0];
+
+        const track = tracks[trackId];
         console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
         console.log('Settings: ' + JSON.stringify(track.getSettings()));
 
@@ -49,13 +52,17 @@ const _turnOn = () => {
             });
         });
     });
+
+    return trackId++;
 }
 
 const turnOn = (duration) => {
+    let trackId = null;
     setTimeout(() => {
-        turnOff();
+        turnOff(trackId);
     }, duration);
-    _turnOn();
+    trackId = _turnOn();
+    console.log(trackId)
 }
 
 const lightSeq = (times) => {
