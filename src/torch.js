@@ -10,7 +10,7 @@ const isOff = () => torchOff;
 const turnOff = (id) => {
     console.log('Turn Off', id)
     const track = tracks[id];
-    if (torchOff || !track) return;
+    if (!track) return;
     torchOff = true;
     console.log(track)
     console.log(track.enabled, track.readyState)
