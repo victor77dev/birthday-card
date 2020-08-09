@@ -12,7 +12,7 @@ function runTorch() {
     Torch.turnOff();
     Torch.lightSeq([
         [2, 3],
-        [7, 1],
+        [7, 0.2],
         [10, 1],
     ])
 }
