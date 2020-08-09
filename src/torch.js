@@ -51,7 +51,7 @@ const _turnOn = () => {
         console.log('Settings: ' + JSON.stringify(track.getSettings()));
 
         const imageCapture = new ImageCapture(track);
-        return imageCapture.getPhotoCapabilities().then(() => {
+        imageCapture.getPhotoCapabilities().then(() => {
             track.applyConstraints({
                 advanced: [{torch: true}]
             }).then(() => {
