@@ -10,12 +10,10 @@ function enableScreenLog() {
 function runTorch() {
     Torch.lightSeq([
         [2, 3],
-        [7, 2],
-        [10, 2],
-        [13, 2],
+        [7, 0.2],
+        [10, 0.1],
+        [13, 1],
         [16, 2],
-        [20, 2],
-        [24, 2],
     ])
 }
 
