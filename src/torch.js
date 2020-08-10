@@ -59,8 +59,10 @@ const _turnOn = () => {
 }
 
 const turnOn = (duration) => {
+    const start = performance.now();
     _turnOn().then((id) => {
-        console.log(id)
+        const end = performance.now();
+        console.log(`${id}: took ${end - start} to turn on`);
         setTimeout(() => {
             turnOff(id);
         }, duration);
