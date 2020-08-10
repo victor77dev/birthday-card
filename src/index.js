@@ -30,7 +30,6 @@ function startVideo() {
 
 const start = document.querySelector('#start');
 start.addEventListener('click', function() {
-    enableScreenLog();
     console.log('start clicked');
     startVideo();
 });
