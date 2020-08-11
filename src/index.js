@@ -17,16 +17,45 @@ function runTorch() {
     ])
 }
 
-function startVideo() {
+function timeUpdated(torchSeq, event) {
+    const {index, seq} = torchSeq;
+    if (!seq[index] || event.target.currentTime < seq[index]) return;
+
+    if (index % 2 === 0) {
+        Torch.isOff && Torch.turnOn();
+    } else {
+        !Torch.isOff && Torch.turnOff();
+    }
+    torchSeq.index++;
+}
+
+function playVideoWithTorch(src, torchSeq) {
     const video = document.querySelector('#video');
+    video.src = src;
+
     const isIOS = !video.requestFullscreen;
     if (isIOS) {
         video.webkitEnterFullscreen();
     } else {
         video.requestFullscreen();
     }
+
+    video.addEventListener('timeupdate', timeUpdated.bind(this, torchSeq));
+
     video.play();
-    runTorch();
+}
+
+function startVideo() {
+    const torchSeq = {
+        index: 0,
+        seq: [
+            1, 2,
+            5, 5.1,
+            6, 6.2,
+            7, 9.1,
+        ]
+    };
+    playVideoWithTorch('songs/birthday-song.mp4', torchSeq);
 }
 
 const start = document.querySelector('#start');
