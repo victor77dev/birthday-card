@@ -45,21 +45,17 @@ function playVideoWithTorch(src, torchSeq) {
     video.play();
 }
 
-function startVideo() {
+async function startVideo(video) {
+    const {seq} = await import(`./songs/${video}.js`);
     const torchSeq = {
         index: 0,
-        seq: [
-            1, 2,
-            5, 5.1,
-            6, 6.2,
-            7, 9.1,
-        ]
+        seq,
     };
-    playVideoWithTorch('songs/birthday-song.mp4', torchSeq);
+    playVideoWithTorch(`songs/${video}.mp4`, torchSeq);
 }
 
 const start = document.querySelector('#start');
 start.addEventListener('click', function() {
     console.log('start clicked');
-    startVideo();
+    startVideo('birthday-song');
 });
