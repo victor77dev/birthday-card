@@ -7,11 +7,19 @@ let torchOff = true;
 const isOff = () => torchOff;
 
 const turnOff = (id) => {
-    console.log('Turn Off', id)
-    const track = tracks[id];
-    if (!track) return;
+    console.log('Turn Off', id, tracks)
     torchOff = true;
-    track.stop();
+    const track = tracks[id];
+    if (track) {
+        track.stop();
+        delete tracks[id];
+        return;
+    };
+
+    for (let key in tracks) {
+        tracks[key].stop();
+        delete tracks[key];
+    };
 }
 
 const _turnOn = () => {
