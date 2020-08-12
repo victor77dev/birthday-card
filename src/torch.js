@@ -63,10 +63,14 @@ const turnOn = (duration) => {
     _turnOn().then((id) => {
         const end = performance.now();
         console.log(`${id}: took ${end - start} to turn on`);
-        setTimeout(() => {
-            turnOff(id);
-        }, duration);
-    })
+        if (duration) {
+            setTimeout(() => {
+                turnOff(id);
+            }, duration);
+        }
+    }).catch((error) => {
+        console.error(error)
+    });
 }
 
 const lightSeq = (times) => {
