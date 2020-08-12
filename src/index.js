@@ -19,13 +19,9 @@ function runTorch() {
 
 function timeUpdated(torchSeq, event) {
     const {index, seq} = torchSeq;
-    if (!seq[index] || event.target.currentTime < seq[index]) return;
+    if (!seq[index] || event.target.currentTime < seq[index].start) return;
 
-    if (index % 2 === 0) {
-        Torch.isOff && Torch.turnOn();
-    } else {
-        !Torch.isOff && Torch.turnOff();
-    }
+    Torch.isOff && Torch.turnOn(seq[index].duration);
     torchSeq.index++;
 }
 
@@ -45,13 +41,23 @@ function playVideoWithTorch(src, torchSeq) {
     video.play();
 }
 
+function convertToDuration(seq) {
+    const output = [];
+    for (let i = 0; i < seq.length; i += 2) {
+        output.push({
+            start: seq[i],
+            duration: seq[i + 1] - seq[i],
+        });
+    }
+    return output;
+}
+
 async function startVideo(video) {
     const {seq} = await import(`./songs/${video}.js`);
-    const torchSeq = {
+    playVideoWithTorch(`songs/${video}.mp4`, {
         index: 0,
-        seq,
-    };
-    playVideoWithTorch(`songs/${video}.mp4`, torchSeq);
+        seq: convertToDuration(seq),
+    });
 }
 
 const start = document.querySelector('#start');
