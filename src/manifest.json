@@ -1,0 +1,7 @@
+{
+  "short_name": "Birthday Card",
+  "name": "Birthday Card",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary"
+}
