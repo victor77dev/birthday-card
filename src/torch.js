@@ -44,7 +44,9 @@ const _turnOn = () => {
         tracks[trackId] = stream.getVideoTracks()[0];
 
         const track = tracks[trackId];
+        window.track = track;
         console.log('Constraints: ' + JSON.stringify(track.getConstraints()));
+        console.log('Capabitlities: ' + JSON.stringify(track.getCapabilities()));
         console.log('Settings: ' + JSON.stringify(track.getSettings()));
 
         const imageCapture = new ImageCapture(track);
