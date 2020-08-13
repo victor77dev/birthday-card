@@ -25,6 +25,11 @@ function timeUpdated(torchSeq, event) {
     torchSeq.index++;
 }
 
+function projectFullscreen(video) {
+    video.classList.remove('hidden');
+    video.classList.add('fullscreen');
+}
+
 function playVideoWithTorch(src, torchSeq) {
     const video = document.querySelector('#video');
     video.src = src;
@@ -38,6 +43,7 @@ function playVideoWithTorch(src, torchSeq) {
 
     video.addEventListener('timeupdate', timeUpdated.bind(this, torchSeq));
 
+    projectFullscreen(video);
     video.play();
 }
 
