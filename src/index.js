@@ -45,7 +45,7 @@ function playVideoWithTorch(src, torchSeq) {
 
     video.addEventListener('timeupdate', timeUpdated.bind(this, torchSeq));
 
-    // projectFullscreen(video);
+    projectFullscreen(video);
     video.play();
 }
 
@@ -70,7 +70,6 @@ async function startVideo(video) {
 
 const start = document.querySelector('#start');
 start.addEventListener('click', function() {
-    enableScreenLog();
     console.log('start clicked');
     startVideo('birthday-song');
 });
