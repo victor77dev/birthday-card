@@ -25,6 +25,15 @@ function timeUpdated(torchSeq, event) {
     torchSeq.index++;
 }
 
+function fullscreen(video) {
+    const isIOS = !video.requestFullscreen;
+    if (isIOS) {
+        video.webkitEnterFullscreen();
+    } else {
+        video.requestFullscreen();
+    }
+}
+
 function projectFullscreen(video) {
     video.classList.remove('hidden');
     video.classList.add('fullscreen');
@@ -33,13 +42,6 @@ function projectFullscreen(video) {
 function playVideoWithTorch(src, torchSeq) {
     const video = document.querySelector('#video');
     video.src = src;
-
-    const isIOS = !video.requestFullscreen;
-    if (isIOS) {
-        video.webkitEnterFullscreen();
-    } else {
-        video.requestFullscreen();
-    }
 
     video.addEventListener('timeupdate', timeUpdated.bind(this, torchSeq));
 
