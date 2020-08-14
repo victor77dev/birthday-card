@@ -71,5 +71,9 @@ async function startVideo(video) {
 const start = document.querySelector('#start');
 start.addEventListener('click', function() {
     console.log('start clicked');
+
+    const app = document.querySelector('#app');
+    app.requestFullscreen();
+    window.screen.orientation?.lock('portrait-primary');
     startVideo('birthday-song');
 });
