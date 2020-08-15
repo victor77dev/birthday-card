@@ -25,13 +25,10 @@ function timeUpdated(torchSeq, event) {
     torchSeq.index++;
 }
 
-function fullscreen(video) {
-    const isIOS = !video.requestFullscreen;
-    if (isIOS) {
-        video.webkitEnterFullscreen();
-    } else {
-        video.requestFullscreen();
-    }
+function fullscreen(ele) {
+    if (ele.requestFullscreen) return ele.requestFullscreen();
+
+    if (ele.webkitEnterFullscreen) return ele.webkitEnterFullscreen();
 }
 
 function projectFullscreen(video) {
@@ -73,7 +70,7 @@ start.addEventListener('click', function() {
     console.log('start clicked');
 
     const app = document.querySelector('#app');
-    app.requestFullscreen();
+    fullscreen(app);
     window.screen.orientation?.lock('portrait-primary');
     startVideo('birthday-song');
 });
