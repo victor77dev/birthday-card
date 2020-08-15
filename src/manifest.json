@@ -3,9 +3,10 @@
   "name": "Birthday Card",
   "icons": [
     {
-      "src": "birthday-cake.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "birthday-cake.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "index.html",
