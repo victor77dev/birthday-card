@@ -10,3 +10,7 @@
 .hidden {
     display: none;
 }
+
+#debug {
+    display: none;
+}
