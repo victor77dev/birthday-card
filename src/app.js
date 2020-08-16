@@ -1,15 +1,10 @@
 import {Torch} from './torch.js';
+import * as Utils from './utils.js';
 
 import * as Start from './pages/start.js';
 
-const app = document.querySelector('#app');
-function goTo(page) {
-    app.insertAdjacentHTML('afterbegin', page.element);
-    page?.init();
-}
-
 window.onload = () => {
-    goTo(Start);
+    Utils.goTo(Start);
 }
 
 function enableScreenLog() {
