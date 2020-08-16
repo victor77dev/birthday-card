@@ -46,6 +46,11 @@ function playVideoWithTorch(src, torchSeq) {
     video.play();
 }
 
+function lockOrientation(target) {
+    const {orientation} = window.screen;
+    if (orientation) orientation?.lock(target);
+}
+
 function convertToDuration(seq) {
     const output = [];
     for (let i = 0; i < seq.length; i += 2) {
@@ -71,6 +76,6 @@ start.addEventListener('click', function() {
 
     const app = document.querySelector('#app');
     fullscreen(app);
-    window.screen.orientation?.lock('portrait-primary');
+    lockOrientation('portrait-primary');
     startVideo('birthday-song');
 });
