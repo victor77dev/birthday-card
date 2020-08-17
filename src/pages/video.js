@@ -28,9 +28,9 @@ export class Video {
         if (orientation) orientation?.lock(target);
     }
 
-    async startVideo(video) {
-        const {seq} = await import(`../songs/${video}.js`);
-        this.playVideoWithTorch(`songs/${video}.mp4`, {
+    async startVideo(song) {
+        const {seq} = await import(`../songs/${song}.js`);
+        this.playVideoWithTorch(`songs/${song}.mp4`, {
             index: 0,
             seq: this.convertToDuration(seq),
         });
