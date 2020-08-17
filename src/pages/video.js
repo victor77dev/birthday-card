@@ -1,65 +1,67 @@
 import {Torch} from '../torch.js';
 
-function fullscreen(ele) {
-    if (ele.requestFullscreen) return ele.requestFullscreen();
+export class Video {
+    init() {
+        const app = document.querySelector('#app');
+        this.fullscreen(app);
+        this.lockOrientation('portrait-primary');
+        this.startVideo('birthday-song');
+    };
 
-    if (ele.webkitEnterFullscreen) return ele.webkitEnterFullscreen();
-}
+    element =
+    '<div class="page">\
+        <video id="video" width="100%" playsinline controls></video>\
+    </div>';
 
-function lockOrientation(target) {
-    const {orientation} = window.screen;
-    if (orientation) orientation?.lock(target);
-}
+    fullscreen(ele) {
+        if (ele.requestFullscreen) return ele.requestFullscreen();
 
-async function startVideo(video) {
-    const {seq} = await import(`../songs/${video}.js`);
-    playVideoWithTorch(`songs/${video}.mp4`, {
-        index: 0,
-        seq: convertToDuration(seq),
-    });
-}
+        if (ele.webkitEnterFullscreen) return ele.webkitEnterFullscreen();
+    }
 
-function timeUpdated(torchSeq, event) {
-    const {index, seq} = torchSeq;
-    if (!seq[index] || event.target.currentTime < seq[index].start) return;
+    lockOrientation(target) {
+        const {orientation} = window.screen;
+        if (orientation) orientation?.lock(target);
+    }
 
-    Torch.isOff && Torch.turnOn(seq[index].duration);
-    torchSeq.index++;
-}
-
-function convertToDuration(seq) {
-    const output = [];
-    for (let i = 0; i < seq.length; i += 2) {
-        output.push({
-            start: seq[i],
-            duration: seq[i + 1] - seq[i],
+    async startVideo(video) {
+        const {seq} = await import(`../songs/${video}.js`);
+        this.playVideoWithTorch(`songs/${video}.mp4`, {
+            index: 0,
+            seq: this.convertToDuration(seq),
         });
     }
-    return output;
+
+    timeUpdated(torchSeq, event) {
+        const {index, seq} = torchSeq;
+        if (!seq[index] || event.target.currentTime < seq[index].start) return;
+
+        Torch.isOff && Torch.turnOn(seq[index].duration);
+        torchSeq.index++;
+    }
+
+    convertToDuration(seq) {
+        const output = [];
+        for (let i = 0; i < seq.length; i += 2) {
+            output.push({
+                start: seq[i],
+                duration: seq[i + 1] - seq[i],
+            });
+        }
+        return output;
+    }
+
+    projectFullscreen(video) {
+        video.classList.add('project');
+    }
+
+    playVideoWithTorch(src, torchSeq) {
+        const video = document.querySelector('#video');
+        video.src = src;
+
+        video.addEventListener('timeupdate', this.timeUpdated.bind(this, torchSeq));
+
+        this.projectFullscreen(video);
+        video.play();
+    }
 }
-
-function projectFullscreen(video) {
-    video.classList.add('project');
-}
-
-function playVideoWithTorch(src, torchSeq) {
-    const video = document.querySelector('#video');
-    video.src = src;
-
-    video.addEventListener('timeupdate', timeUpdated.bind(this, torchSeq));
-
-    projectFullscreen(video);
-    video.play();
-}
-
-export const init = () => {
-    const app = document.querySelector('#app');
-    fullscreen(app);
-    lockOrientation('portrait-primary');
-    startVideo('birthday-song');
-};
-
-export const element =
-'<div class="page">\
-    <video id="video" width="100%" playsinline controls></video>\
-</div>';
