@@ -7,6 +7,8 @@ export class Video {
         this.fullscreen(app);
         this.lockOrientation('portrait-primary');
         this.startVideo('birthday-song');
+
+        this.video = document.querySelector('#video');
     };
 
     element =
@@ -53,18 +55,19 @@ export class Video {
         return output;
     }
 
-    projectFullscreen(video) {
-        video.classList.add('project');
+    projectFullscreen() {
+        this.video.classList.add('project');
     }
 
     playVideoWithTorch(src, torchSeq) {
-        const video = document.querySelector('#video');
+        const {video} = this;
+
         video.src = src;
 
         this.timeUpdatedWithTorchSeq = this.timeUpdated.bind(this, torchSeq);
         video.addEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
 
-        this.projectFullscreen(video);
+        this.projectFullscreen();
         video.play();
     }
 
