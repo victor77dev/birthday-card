@@ -3,6 +3,7 @@ import {Torch} from '../torch.js';
 export class Video {
     init() {
         const app = document.querySelector('#app');
+        this.addCloseButton();
         this.fullscreen(app);
         this.lockOrientation('portrait-primary');
         this.startVideo('birthday-song');
@@ -10,6 +11,7 @@ export class Video {
 
     element =
     '<div class="page">\
+        <button id="close" class="hidden">close</button>\
         <video id="video" width="100%" playsinline controls></video>\
     </div>';
 
@@ -59,9 +61,37 @@ export class Video {
         const video = document.querySelector('#video');
         video.src = src;
 
-        video.addEventListener('timeupdate', this.timeUpdated.bind(this, torchSeq));
+        this.timeUpdatedWithTorchSeq = this.timeUpdated.bind(this, torchSeq);
+        video.addEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
 
         this.projectFullscreen(video);
         video.play();
+    }
+
+    closeVideo() {
+        const {video} = this;
+
+        video.removeEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
+        video.pause();
+    }
+    
+    showButton(button) {
+        button.classList.remove('hidden');
+        button.classList.add('shown');
+
+        if (this.showTimeout) clearTimeout(this.showTimeout);
+
+        this.showTimeout = setTimeout(() => {
+            button.classList.add('hidden');
+            button.classList.remove('shown');
+            this.showTimeout = null;
+        }, 4000);
+    }
+
+    addCloseButton() {
+        const page = document.querySelector('.page');
+        const close = document.querySelector('#close.hidden');
+        page.addEventListener('touchstart', this.showButton.bind(this, close));
+        close.addEventListener('click', this.closeVideo.bind(this));
     }
 }
