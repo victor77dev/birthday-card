@@ -65,6 +65,10 @@ export class Video {
         this.video.classList.add('project');
     }
 
+    exitProjectFullscreen() {
+        this.video.classList.remove('project');
+    }
+
     playVideoWithTorch(src, torchSeq) {
         const {video} = this;
 
@@ -82,6 +86,7 @@ export class Video {
 
         video.removeEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
         video.pause();
+        this.exitProjectFullscreen();
         this.exitFullscreen();
     }
     
