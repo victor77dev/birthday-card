@@ -23,6 +23,12 @@ export class Video {
         if (ele.webkitEnterFullscreen) return ele.webkitEnterFullscreen();
     }
 
+    exitFullscreen() {
+        if (document.exitFullscreen) return document.exitFullscreen();
+
+        if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+    }
+
     lockOrientation(target) {
         const {orientation} = window.screen;
         if (orientation) orientation?.lock(target);
@@ -76,6 +82,7 @@ export class Video {
 
         video.removeEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
         video.pause();
+        this.exitFullscreen();
     }
     
     showButton(button) {
