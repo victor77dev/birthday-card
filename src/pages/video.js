@@ -39,8 +39,7 @@ function convertToDuration(seq) {
 }
 
 function projectFullscreen(video) {
-    video.classList.remove('hidden');
-    video.classList.add('fullscreen');
+    video.classList.add('project');
 }
 
 function playVideoWithTorch(src, torchSeq) {
@@ -62,5 +61,5 @@ export const init = () => {
 
 export const element =
 '<div class="page">\
-    <video id="video" class="hidden" width="100%" playsinline controls></video>\
+    <video id="video" width="100%" playsinline controls></video>\
 </div>';
