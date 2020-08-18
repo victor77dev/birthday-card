@@ -1,10 +1,10 @@
 import {Torch} from './torch.js';
 import * as Utils from './utils.js';
 
-import {Start} from './pages/start.js';
+import {Welcome} from './pages/welcome.js';
 
 window.onload = () => {
-    Utils.goTo(new Start());
+    Utils.goTo(new Welcome());
 }
 
 function enableScreenLog() {
