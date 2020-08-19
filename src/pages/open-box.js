@@ -1,11 +1,11 @@
-import {Start} from './start.js';
+import {Question} from './question.js';
 import * as Utils from '../utils.js';
 
 export class OpenBox {
     init = () => {
         const next = document.querySelector('#next');
         next.addEventListener('click', function() {
-            Utils.goTo(new Start());
+            Utils.goTo(new Question());
         });
     };
 
