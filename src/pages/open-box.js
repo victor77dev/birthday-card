@@ -1,17 +1,17 @@
-import {OpenBox} from './open-box.js';
+import {Start} from './start.js';
 import * as Utils from '../utils.js';
 
-export class Welcome {
+export class OpenBox {
     init = () => {
         const next = document.querySelector('#next');
         next.addEventListener('click', function() {
-            Utils.goTo(new OpenBox());
+            Utils.goTo(new Start());
         });
     };
 
     element =
     '<div class="page">\
-        <h1>Happy Birthday<h1>\
+        <h1>Songs?<h1>\
         <button id="next">Next</button>\
     </div>';
 }
