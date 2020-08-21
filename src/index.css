@@ -26,3 +26,17 @@
 #debug {
     display: none;
 }
+
+.image {
+    width: 80%;
+}
+
+.parts {
+    display: block;
+    margin: auto;
+}
+
+#parts-container {
+    width: 100%;
+    flex-direction: column;
+}
