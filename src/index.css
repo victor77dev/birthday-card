@@ -40,3 +40,8 @@
     width: 100%;
     flex-direction: column;
 }
+
+#guide-container {
+    width: 100%;
+    flex-direction: column;
+}
