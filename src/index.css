@@ -29,11 +29,11 @@
 
 .image {
     width: 80%;
+    display: block;
+    margin: auto;
 }
 
 .parts {
-    display: block;
-    margin: auto;
 }
 
 .parts-container {
