@@ -36,12 +36,17 @@
     margin: auto;
 }
 
-#parts-container {
+.parts-container {
     width: 100%;
     flex-direction: column;
 }
 
-#guide-container {
+.guide-container {
+    width: 100%;
+    flex-direction: column;
+}
+
+.start-container {
     width: 100%;
     flex-direction: column;
 }
