@@ -11,7 +11,7 @@ export class GuideProject {
 
     element =
     '<div class="page">\
-        <h1>Put project card.<h1>\
+        <h1>Put project card.</h1>\
         <button id="next">Next</button>\
     </div>';
 }

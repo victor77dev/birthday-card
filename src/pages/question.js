@@ -16,7 +16,7 @@ export class Question {
 
     element =
     '<div class="page">\
-        <h1>Did you receive the 3D card?<h1>\
+        <h1>Did you receive the 3D card?</h1>\
         <button id="yes">Yes</button>\
         <button id="no">No</button>\
     </div>';

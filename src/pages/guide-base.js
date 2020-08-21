@@ -11,7 +11,7 @@ export class GuideBase {
 
     element =
     '<div class="page">\
-        <h1>Assemble 4 triangles base<h1>\
+        <h1>Assemble 4 triangles base</h1>\
         <button id="next">Next</button>\
     </div>';
 }

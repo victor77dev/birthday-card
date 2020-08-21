@@ -11,7 +11,7 @@ export class Welcome {
 
     element =
     '<div class="page">\
-        <h1>Happy Birthday<h1>\
+        <h1>Happy Birthday</h1>\
         <button id="next">Next</button>\
     </div>';
 }

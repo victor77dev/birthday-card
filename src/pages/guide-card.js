@@ -11,7 +11,7 @@ export class GuideCard {
 
     element =
     '<div class="page">\
-        <h1>Put card for phone base.<h1>\
+        <h1>Put card for phone base.</h1>\
         <button id="next">Next</button>\
     </div>';
 }

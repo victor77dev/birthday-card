@@ -11,7 +11,7 @@ export class CheckParts {
 
     element =
     '<div class="page">\
-        <h1>Make sure you have all the parts!<h1>\
+        <h1>Make sure you have all the parts!</h1>\
         <button id="next">Next</button>\
     </div>';
 }

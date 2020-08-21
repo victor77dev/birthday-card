@@ -11,7 +11,7 @@ export class GuideLight {
 
     element =
     '<div class="page">\
-        <h1>Put reflect card under base.<h1>\
+        <h1>Put reflect card under base.</h1>\
         <button id="next">Next</button>\
     </div>';
 }
