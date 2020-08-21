@@ -11,6 +11,9 @@ export class Start {
 
     element =
     '<div class="page">\
+        <div class="start-container">\
+            <img src="images/start.jpg" class="start image" alt="Ready to start" />\
+        </div>\
         <button id="start">Start</button>\
     </div>';
 }
