@@ -31,7 +31,7 @@ export class Video {
 
     lockOrientation(target) {
         const {orientation} = window.screen;
-        if (orientation) orientation?.lock(target);
+        if (orientation && orientation.lock) orientation.lock(target);
     }
 
     async startVideo(song) {
