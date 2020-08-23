@@ -7,6 +7,24 @@
     height: 100vw;
 }
 
+.page {
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    background-image: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,1) 100%);
+}
+
+.gold-text {
+    margin: auto;
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,215,0, 1) 50%, rgba(255,255,255,0.75) 100%);
+    font-size: 10vh;
+}
+
 #video {
     z-index: -1;
 }
