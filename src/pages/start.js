@@ -8,7 +8,7 @@ export class Start {
             <div class="start-container">\
                 <img src="images/start.jpg" class="start image" alt="Ready to start" />\
             </div>\
-            <button id="start">Start</button>\
+            <button class="button" id="start">Start</button>\
         </div>';
     }
 

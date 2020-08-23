@@ -3,7 +3,7 @@ import {Torch} from '../torch.js';
 export class Video {
     constructor() {
         this.element =
-        '<div class="page">\
+        '<div id="video-page">\
             <button id="close" class="hidden">close</button>\
             <video id="video" width="100%" playsinline controls></video>\
         </div>';
@@ -106,7 +106,7 @@ export class Video {
     }
 
     addCloseButton() {
-        const page = document.querySelector('.page');
+        const page = document.querySelector('#video-page');
         const close = document.querySelector('#close.hidden');
         page.addEventListener('touchstart', this.showButton.bind(this, close));
         close.addEventListener('click', this.closeVideo.bind(this));

@@ -9,7 +9,7 @@ export class GuideProject {
             <div class="guide-container">\
                 <img src="images/project.jpg" class="project-card image" alt="Project card" />\
             </div>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 

@@ -9,7 +9,7 @@ export class GuideCard {
             <div class="guide-container">\
                 <img src="images/card.jpg" class="card image" alt="Phone card" />\
             </div>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 

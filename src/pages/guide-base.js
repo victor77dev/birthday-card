@@ -10,7 +10,7 @@ export class GuideBase {
                 <img src="images/base-1.jpg" class="base image" alt="Step 1" />\
                 <img src="images/base-2.jpg" class="base image" alt="Step 2" />\
             </div>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 

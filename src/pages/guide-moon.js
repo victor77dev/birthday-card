@@ -9,7 +9,7 @@ export class GuideMoon {
             <div class="guide-container">\
                 <img src="images/moon.jpg" class="light image" alt="Star Moon" />\
             </div>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 

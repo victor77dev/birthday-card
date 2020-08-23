@@ -12,7 +12,7 @@ export class CheckParts {
                 <img src="images/parts-3.jpg" class="parts image" alt="Reflect card" />\
                 <img src="images/parts-4.jpg" class="parts image" alt="Phone card" />\
             </div>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 

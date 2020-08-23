@@ -9,7 +9,7 @@ export class GuideLight {
             <div class="guide-container">\
                 <img src="images/light.jpg" class="light image" alt="Reflect card" />\
             </div>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 

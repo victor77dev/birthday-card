@@ -6,7 +6,7 @@ export class OpenBox {
         this.element =
         '<div class="page">\
             <h1>Songs?</h1>\
-            <button id="next">Next</button>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 
