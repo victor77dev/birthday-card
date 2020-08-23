@@ -27,6 +27,25 @@
     font-weight: 500;
 }
 
+.button {
+    padding: 6 1rem;
+    margin: 0 auto 1rem auto;
+    font-size: 1rem;
+    min-width: 4rem;
+    border: 0;
+    outline: 0;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.75;
+    color: #fff;
+    background-color: #1976d2;
+    letter-spacing: 0.02857em;
+    cursor: pointer;
+    user-select: none;
+}
+
 #video {
     z-index: -1;
 }

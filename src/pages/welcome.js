@@ -5,8 +5,8 @@ export class Welcome {
     constructor() {
         this.element =
         '<div class="page">\
-            <button id="next">Next</button>\
             <h1 class="gold-text">Happy Birthday</h1>\
+            <button class="button" id="next">Next</button>\
         </div>';
     }
 
