@@ -1,13 +1,15 @@
 export class Song {
+    constructor() {
+        this.element =
+        '<div class="page">\
+            <button id="close" class="hidden">close</button>\
+            <video id="video" width="100%" playsinline controls></video>\
+        </div>';
+    }
+
     init() {
         this.playVideo('birthday-song');
     };
-
-    element =
-    '<div class="page">\
-        <button id="close" class="hidden">close</button>\
-        <video id="video" width="100%" playsinline controls></video>\
-    </div>';
 
     playVideo(song) {
         const video = document.querySelector('#video');

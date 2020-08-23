@@ -3,7 +3,16 @@ import {Song} from './song.js';
 import * as Utils from '../utils.js';
 
 export class Question {
-    init = () => {
+    constructor() {
+        this.element =
+        '<div class="page">\
+            <h1>Did you receive the 3D card?</h1>\
+            <button id="yes">Yes</button>\
+            <button id="no">No</button>\
+        </div>';
+    }
+
+    init() {
         const yes = document.querySelector('#yes');
         yes.addEventListener('click', function() {
             Utils.goTo(new CheckParts());
@@ -13,11 +22,4 @@ export class Question {
             Utils.goTo(new Song());
         });
     };
-
-    element =
-    '<div class="page">\
-        <h1>Did you receive the 3D card?</h1>\
-        <button id="yes">Yes</button>\
-        <button id="no">No</button>\
-    </div>';
 }

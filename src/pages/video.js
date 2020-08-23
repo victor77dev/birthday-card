@@ -1,6 +1,14 @@
 import {Torch} from '../torch.js';
 
 export class Video {
+    constructor() {
+        this.element =
+        '<div class="page">\
+            <button id="close" class="hidden">close</button>\
+            <video id="video" width="100%" playsinline controls></video>\
+        </div>';
+    }
+
     init() {
         const app = document.querySelector('#app');
         this.addCloseButton();
@@ -10,12 +18,6 @@ export class Video {
 
         this.video = document.querySelector('#video');
     };
-
-    element =
-    '<div class="page">\
-        <button id="close" class="hidden">close</button>\
-        <video id="video" width="100%" playsinline controls></video>\
-    </div>';
 
     fullscreen(ele) {
         if (ele.requestFullscreen) return ele.requestFullscreen();
