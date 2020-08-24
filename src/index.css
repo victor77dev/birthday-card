@@ -32,7 +32,7 @@ body {
 }
 
 .button {
-    padding: 6 1rem;
+    padding: 0.375rem 1rem;
     margin: 1rem auto 1rem auto;
     font-size: 1rem;
     min-width: 4rem;
