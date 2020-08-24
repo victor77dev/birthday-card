@@ -13,7 +13,7 @@
     flex-direction: column;
 }
 
-.prev, .next {
+.left, .right {
     cursor: pointer;
     top: 50%;
     margin-top: -1.5rem;
@@ -25,14 +25,14 @@
     color: white;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.6s ease;
+    transition: background-color 0.3s ease;
     user-select: none;
 }
 
-.next {
+.right {
     right: 0;
 }
 
-.prev:active, .next:active {
-    background-color: rgba(0,0,0,0.8);
+.left:active, .right:active {
+    background-color: rgba(0,0,0,0.5);
 }

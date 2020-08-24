@@ -11,8 +11,8 @@ export class CheckParts {
                 <img src="images/parts-2.jpg" class="parts image" alt="Project & Star Moon" />\
                 <img src="images/parts-3.jpg" class="parts image" alt="Reflect card" />\
                 <img src="images/parts-4.jpg" class="parts image" alt="Phone card" />\
-                <button class="prev">❮</button>\
-                <button class="next">❯</button>\
+                <button class="left">❮</button>\
+                <button class="right">❯</button>\
             </div>\
             <button class="button" id="next">Next</button>\
         </div>';
