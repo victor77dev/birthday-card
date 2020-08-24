@@ -2,10 +2,6 @@
     display: none;
 }
 
-.parts.active {
-    display: block;
-}
-
 .parts-container {
     width: 90%;
     position: relative;
@@ -62,4 +58,22 @@
 .slide-bar {
     margin: 1rem auto 0;
     text-align: center;
+}
+
+.parts.active {
+    display: block;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
 }
