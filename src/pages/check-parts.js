@@ -15,6 +15,12 @@ export class CheckParts {
                 <img src="images/parts-4.jpg" class="parts image" alt="Phone card" />\
                 <button class="left">❮</button>\
                 <button class="right">❯</button>\
+                <div class="slide-bar">\
+                    <span class="active dot"></span>\
+                    <span class="dot"></span>\
+                    <span class="dot"></span>\
+                    <span class="dot"></span>\
+                </div>\
             </div>\
             <button class="button" id="next">Next</button>\
         </div>';
@@ -32,14 +38,26 @@ export class CheckParts {
         left.addEventListener('click', this.updateImage.bind(this, LEFT));
         const right = document.querySelector('.right');
         right.addEventListener('click', this.updateImage.bind(this, RIGHT));
+
+        const dots = document.querySelectorAll('span.dot');
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].addEventListener('click', this.setImage.bind(this, i));
+        }
     };
 
     updateImage(direction) {
+        this.setImage((this.index + direction + this.length) % this.length);
+    }
+
+    setImage(index) {
         const imageList = document.querySelectorAll('.parts.image');
+        const dots = document.querySelectorAll('span.dot');
 
         imageList[this.index].classList.remove('active');
+        dots[this.index].classList.remove('active');
 
-        this.index = (this.index + direction + this.length) % this.length;
+        this.index = index;
         imageList[this.index].classList.add('active');
+        dots[this.index].classList.add('active');
     }
 }
