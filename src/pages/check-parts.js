@@ -1,6 +1,8 @@
 import {GuideBase} from './guide-base.js';
 import * as Utils from '../utils.js';
 
+const LEFT = -1;
+const RIGHT = 1;
 export class CheckParts {
     constructor() {
         this.element =
@@ -16,6 +18,8 @@ export class CheckParts {
             </div>\
             <button class="button" id="next">Next</button>\
         </div>';
+        this.index = 0;
+        this.length = 4;
     }
 
     init() {
@@ -23,5 +27,19 @@ export class CheckParts {
         next.addEventListener('click', function() {
             Utils.goTo(new GuideBase());
         });
+
+        const left = document.querySelector('.left');
+        left.addEventListener('click', this.updateImage.bind(this, LEFT));
+        const right = document.querySelector('.right');
+        right.addEventListener('click', this.updateImage.bind(this, RIGHT));
     };
+
+    updateImage(direction) {
+        const imageList = document.querySelectorAll('.parts.image');
+
+        imageList[this.index].classList.remove('active');
+
+        this.index = (this.index + direction + this.length) % this.length;
+        imageList[this.index].classList.add('active');
+    }
 }
