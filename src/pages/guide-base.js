@@ -18,11 +18,14 @@ export class GuideBase {
 
     init() {
         const next = document.querySelector('#next');
-        next.addEventListener('click', function() {
-            Utils.goTo(new GuideCard());
-        });
-        setInterval(this.updateImage.bind(this), 5000);
+        next.addEventListener('click', this.goNextPage.bind(this));
+        this.interval = setInterval(this.updateImage.bind(this), 5000);
     };
+
+    goNextPage() {
+        clearInterval(this.interval);
+        Utils.goTo(new GuideCard());
+    }
 
     updateImage() {
         this.setImage((this.index + 1) % this.length);
