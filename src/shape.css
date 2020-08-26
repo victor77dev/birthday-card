@@ -21,6 +21,9 @@
     border-bottom: 0.7rem solid yellow;
     border-left: 1rem solid transparent;
     transform: rotate(35deg);
+
+    -webkit-animation: flash 1.5s infinite, track-x 7s ease, track-y 7s cubic-bezier(0.2, 0.81, 0.75, 0.13);
+    animation: flash 1.5s infinite, track-x 7s ease, track-y 7s cubic-bezier(0.2, 0.81, 0.75, 0.13);
 }
 
 #star:before {
@@ -50,4 +53,40 @@
     border-left: 1rem solid transparent;
     transform: rotate(-70deg);
     content: '';
+}
+
+@-webkit-keyframes flash {
+    0% {opacity: 0.5;}
+    35% {opacity: 0.9;}
+    65% {opacity: 0.7;}
+    100% {opacity: 1;}
+}
+
+@keyframes flash {
+    0% {opacity: 0.5;}
+    35% {opacity: 0.9;}
+    65% {opacity: 0.7;}
+    100% {opacity: 1;}
+}
+
+@keyframes track-y {
+    0% {top: 1rem;}
+    15% {top: 10%;}
+    30% {top: 24%;}
+    45% {top: 38%;}
+    60% {top: 47%;}
+    80% {top: 55%;}
+    90% {top: 60%;}
+    100% {top: calc(65% - 0.3rem);}
+}
+
+@keyframes track-x {
+    0% {left: 1rem;}
+    15% {left: 80%;}
+    30% {left: 15%;}
+    45% {left: 70%;}
+    60% {left: 25%;}
+    80% {left: 55%;}
+    90% {left: 35%;}
+    100% {left: calc(50% - 1.95rem);}
 }
