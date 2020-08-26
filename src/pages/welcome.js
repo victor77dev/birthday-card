@@ -8,15 +8,25 @@ export class Welcome {
             <h1 class="gold-text">Happy Birthday</h1>\
             <div id="star"></div>\
             <div id="moon"></div>\
-            <button class="button" id="next">Next</button>\
+            <div id="gift"></div>\
         </div>';
     }
 
     init() {
-        const next = document.querySelector('#next');
-        next.addEventListener('click', function() {
-            Utils.goTo(new OpenBox());
-        });
+        const star = document.querySelector('#star');
+        star.addEventListener('animationend', this.startPack.bind(this));
     };
 
+    startPack(event) {
+        if (event.animationName === 'track-x') {
+            this.addGiftButton();
+        }
+    }
+
+    addGiftButton() {
+        const gift = document.querySelector('#gift');
+        gift.addEventListener('click', function() {
+            Utils.goTo(new OpenBox());
+        });
+    }
 }
