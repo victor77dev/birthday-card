@@ -1,0 +1,11 @@
+#moon.packing, #star.packing {
+    -webkit-animation: packing 1.5s ease forwards;
+    animation: packing 1.5s ease forwards;
+}
+
+@keyframes packing {
+    100% {
+        top: 83%;
+        opacity: 0;
+    }
+}

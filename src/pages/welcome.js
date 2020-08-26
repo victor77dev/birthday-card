@@ -19,6 +19,20 @@ export class Welcome {
 
     startPack(event) {
         if (event.animationName === 'track-x') {
+            setTimeout(() => {
+                const star = document.querySelector('#star');
+                const moon = document.querySelector('#moon');
+
+                star.classList.add('packing');
+                moon.classList.add('packing');
+
+                star.addEventListener('animationend', this.packToBox.bind(this));
+            }, 2000);
+        }
+    }
+
+    packToBox(event) {
+        if (event.animationName === 'packing') {
             this.addGiftButton();
         }
     }
