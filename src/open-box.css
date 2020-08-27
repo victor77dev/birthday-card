@@ -1,0 +1,46 @@
+#cake {
+    width: 100px;
+    height: 100px;
+    margin: 1rem auto;
+    top: 70%;
+    left: calc(50% - 50px);
+    -webkit-animation: cake-opening 2s ease forwards;
+    animation: cake-opening 2s ease forwards;
+    position: absolute;
+    opacity: 0;
+}
+
+#gift.open-gift {
+    -webkit-animation: opening 2s ease forwards;
+    animation: opening 2s ease forwards;
+    position: absolute;
+    bottom: 1rem;
+}
+
+@keyframes cake-opening {
+    100% {
+        top: 40%;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes cake-opening {
+    100% {
+        top: 40%;
+        opacity: 1;
+    }
+}
+
+@keyframes opening {
+    100% {
+        top: 40%;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes opening {
+    100% {
+        top: 40%;
+        opacity: 0;
+    }
+}
