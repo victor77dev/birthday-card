@@ -56,10 +56,6 @@ body {
     z-index: -1;
 }
 
-.remove {
-    display: none;
-}
-
 .hidden {
     visibility: hidden;
 }
