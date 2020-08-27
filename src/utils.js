@@ -6,3 +6,9 @@ export function goTo(page) {
     page.element && app.insertAdjacentHTML('afterbegin', page.element);
     page.init && page.init();
 }
+
+export function preloadImages(urls) {
+    urls.forEach((url) => {
+        new Image().src = url;
+    });
+}
