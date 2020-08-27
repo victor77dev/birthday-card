@@ -11,13 +11,6 @@
     animation-duration: 1.5s;
 }
 
-.guide-container {
-    width: 90%;
-    position: relative;
-    margin: auto;
-    flex-direction: column;
-}
-
 @-webkit-keyframes slide-in {
     from {
         opacity: 0.4;
