@@ -10,11 +10,28 @@
     opacity: 0;
 }
 
+#cake.enlarge {
+    -webkit-animation: cake-enlarge 2s ease forwards;
+    animation: cake-enlarge 2s ease forwards;
+    top: 40%;
+    opacity: 1;
+}
+
 #gift.open-gift {
     -webkit-animation: opening 2s ease forwards;
     animation: opening 2s ease forwards;
     position: absolute;
     bottom: 1rem;
+}
+
+@keyframes cake-enlarge {
+    70% {transform: scale(5);}
+    100% {transform: scale(3);}
+}
+
+@-webkit-keyframes cake-enlarge {
+    70% {transform: scale(5);}
+    100% {transform: scale(3);}
 }
 
 @keyframes cake-opening {

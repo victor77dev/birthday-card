@@ -8,14 +8,22 @@ export class OpenBox {
             <h1>Songs?</h1>\
             <div id="gift" class="open-gift"></div>\
             <img id="cake" src="birthday-cake.svg" />\
-            <button class="button" id="next">Next</button>\
         </div>';
     }
 
     init() {
-        const next = document.querySelector('#next');
-        next.addEventListener('click', function() {
-            Utils.goTo(new Question());
-        });
+        this.cake = document.querySelector('#cake');
+        this.cake.addEventListener('animationend', this.opened.bind(this));
     };
+
+    opened(event) {
+        if (event.animationName === 'cake-opening') {
+            this.cake.classList.add('enlarge');
+        }
+        if (event.animationName === 'cake-enlarge') {
+            setTimeout(() => {
+                Utils.goTo(new Question());
+            }, 1000)
+        }
+    }
 }
