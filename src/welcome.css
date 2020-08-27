@@ -9,3 +9,10 @@
         opacity: 0;
     }
 }
+
+@-webkit-keyframes packing {
+    100% {
+        top: 83%;
+        opacity: 0;
+    }
+}
