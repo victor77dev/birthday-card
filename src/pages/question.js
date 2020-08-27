@@ -7,7 +7,7 @@ export class Question {
         this.element =
         '<div class="page">\
             <h1>Did you receive the 3D card?</h1>\
-            <div>\
+            <div class="answers">\
                 <button class="button" id="yes">Yes</button>\
                 <button class="button" id="no">No</button>\
             </div>\
