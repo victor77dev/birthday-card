@@ -1,3 +1,15 @@
+.gold-text {
+    margin: auto;
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,215,0, 1) 50%, rgba(255,255,255,0.75) 100%);
+    font-size: 10vh;
+    font-family: "Great Vibes";
+    font-weight: 500;
+}
+
 #moon.packing, #star.packing {
     -webkit-animation: packing 1.5s ease forwards;
     animation: packing 1.5s ease forwards;

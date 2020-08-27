@@ -2,15 +2,6 @@ body {
     margin: 0;
 }
 
-.project {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50vh, -50vw) rotate(270deg) translate(-50vh, 50vw) rotateY(180deg);
-    width: 100vh;
-    height: 100vw;
-}
-
 .page {
     min-height: 100%;
     flex-direction: column;
@@ -19,18 +10,6 @@ body {
     background-image: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,1) 100%);
     position: relative;
     z-index: 0;
-}
-
-.gold-text {
-    margin: auto;
-    text-align: center;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,215,0, 1) 50%, rgba(255,255,255,0.75) 100%);
-    font-size: 10vh;
-    font-family: "Great Vibes";
-    font-weight: 500;
 }
 
 .button {
@@ -56,14 +35,6 @@ body {
     z-index: -1;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
-.shown {
-    visibility: visible;
-}
-
 #debug {
     display: none;
 }
@@ -72,14 +43,4 @@ body {
     width: 100%;
     display: block;
     margin: auto;
-}
-
-.guide-container {
-    width: 100%;
-    flex-direction: column;
-}
-
-.start-container {
-    width: 100%;
-    flex-direction: column;
 }
