@@ -10,15 +10,15 @@ export class GuideBase {
                 <img src="images/base-1.jpg" class="active base image" alt="Step 1" />\
                 <img src="images/base-2.jpg" class="base image" alt="Step 2" />\
             </div>\
-            <button class="button" id="next">Next</button>\
+            <button class="button" disabled id="next">Next</button>\
         </div>';
         this.index = 0;
         this.length = 2;
     }
 
     init() {
-        const next = document.querySelector('#next');
-        next.addEventListener('click', this.goNextPage.bind(this));
+        this.next = document.querySelector('#next');
+        this.next.addEventListener('click', this.goNextPage.bind(this));
         this.interval = setInterval(this.updateImage.bind(this), 5000);
     };
 
@@ -28,6 +28,9 @@ export class GuideBase {
     }
 
     updateImage() {
+        if (this.next.disabled && this.index + 1 >= this.length) {
+            this.next.removeAttribute('disabled');
+        }
         this.setImage((this.index + 1) % this.length);
     }
 
