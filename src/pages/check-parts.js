@@ -7,7 +7,7 @@ export class CheckParts {
     constructor() {
         this.element =
         '<div class="page">\
-            <h1>Make sure you have all the parts!</h1>\
+            <h1>Make sure you have all parts!</h1>\
             <div class="parts-container">\
                 <img src="images/parts-1.jpg" class="active parts image" alt="Four base" />\
                 <img src="images/parts-2.jpg" class="parts image" alt="Project & Star Moon" />\

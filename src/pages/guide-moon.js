@@ -5,7 +5,7 @@ export class GuideMoon {
     constructor() {
         this.element =
         '<div class="page">\
-            <h1>Put star moon card.</h1>\
+            <h1>Put star moon card</h1>\
             <div class="guide-container">\
                 <img src="images/moon.jpg" class="light image" alt="Star Moon" />\
             </div>\

@@ -5,7 +5,6 @@ export class OpenBox {
     constructor() {
         this.element =
         '<div class="page">\
-            <h1>Songs?</h1>\
             <div id="gift" class="open-gift"></div>\
             <img id="cake" src="birthday-cake.svg" />\
         </div>';

@@ -5,7 +5,7 @@ export class GuideCard {
     constructor() {
         this.element =
         '<div class="page">\
-            <h1>Put card for phone base.</h1>\
+            <h1>Put card on the base</h1>\
             <div class="guide-container">\
                 <img src="images/card.jpg" class="card image" alt="Phone card" />\
             </div>\

@@ -5,7 +5,7 @@ export class GuideLight {
     constructor() {
         this.element =
         '<div class="page">\
-            <h1>Put reflect card under base.</h1>\
+            <h1>Put reflect card under the base</h1>\
             <div class="guide-container">\
                 <img src="images/light.jpg" class="light image" alt="Reflect card" />\
             </div>\
