@@ -8,7 +8,7 @@ export class Song {
     }
 
     init() {
-        this.playVideo('birthday-song');
+        this.playVideo('happy-birthday-song-only');
     };
 
     playVideo(song) {

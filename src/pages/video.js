@@ -14,7 +14,7 @@ export class Video {
         this.addCloseButton();
         this.fullscreen(app);
         this.lockOrientation('portrait-primary');
-        this.startVideo('birthday-song');
+        this.startVideo('happy-birthday-song-only');
 
         this.video = document.querySelector('#video');
     };
