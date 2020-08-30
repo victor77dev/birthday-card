@@ -10,7 +10,10 @@ export class Video {
             </div>\
             <div id="close" class="hidden close-icon"></div>\
             <video id="video" width="100%" class="hidden" playsinline></video>\
-            <div id="replay" class="hidden replay-icon"></div>\
+            <div class="hidden buttons">\
+                <div id="replay" class="replay-icon"></div>\
+                <div id="more" class="more-icon"></div>\
+            </div>\
             <audio id="audio"></audio>\
         </div>';
         this.song = song;
@@ -110,8 +113,10 @@ export class Video {
     }
 
     showNext() {
+        const buttons = document.querySelector('.buttons');
+        buttons.classList.remove('hidden');
+
         const replay = document.querySelector('#replay');
-        replay.classList.remove('hidden');
         replay.addEventListener('click', () => {
             Utils.goTo(new Video());
         });
