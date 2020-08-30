@@ -28,7 +28,7 @@ export class GuideBase {
     }
 
     updateImage() {
-        if (this.next.disabled && this.index + 1 >= this.length) {
+        if (this.next.disabled && this.index + 1 >= this.length - 1) {
             this.next.removeAttribute('disabled');
         }
         this.setImage((this.index + 1) % this.length);
