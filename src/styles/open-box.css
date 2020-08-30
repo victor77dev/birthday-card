@@ -30,8 +30,8 @@
 }
 
 @-webkit-keyframes cake-enlarge {
-    70% {transform: scale(5);}
-    100% {transform: scale(3);}
+    70% {-webkit-transform: scale(5);}
+    100% {-webkit-transform: scale(3);}
 }
 
 @keyframes cake-opening {
