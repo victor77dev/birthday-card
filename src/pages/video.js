@@ -7,7 +7,7 @@ export class Video {
             <div id="count-down-container">\
                 <h1 id="count-down"></h1>\
             </div>\
-            <button id="close" class="hidden">close</button>\
+            <div id="close" class="hidden close-icon"></div>\
             <video id="video" width="100%" class="hidden" playsinline controls></video>\
             <audio id="audio"></audio>\
         </div>';
