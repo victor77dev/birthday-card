@@ -1,8 +1,9 @@
 import {Video} from './video.js';
+import {Song} from './song.js';
 import * as Utils from '../utils.js';
 
 export class More {
-    constructor() {
+    constructor(from='video') {
         this.element =
         '<div class="page">\
             <div class="more-container">\
@@ -14,22 +15,25 @@ export class More {
                 </div>\
             </div>\
         </div>';
+        this.from = from;
     }
 
     init() {
         const english = document.querySelector('#english');
-        english.addEventListener('click', function() {
-            Utils.goTo(new Video('birthday-song-english'));
-        });
+        english.addEventListener('click', this.goTo.bind(this, 'birthday-song-english'));
 
         const putonghua = document.querySelector('#putonghua');
-        putonghua.addEventListener('click', function() {
-            Utils.goTo(new Video('birthday-song-putonghua'));
-        });
+        putonghua.addEventListener('click', this.goTo.bind(this, 'birthday-song-putonghua'));
 
         const cantonese = document.querySelector('#cantonese');
-        cantonese.addEventListener('click', function() {
-            Utils.goTo(new Video('birthday-song-cantonese'));
-        });
-    };
+        cantonese.addEventListener('click', this.goTo.bind(this, 'birthday-song-cantonese'));
+    }
+
+    goTo(song) {
+        if (this.from === 'song') {
+            Utils.goTo(new Song(song));
+        } else {
+            Utils.goTo(new Video(song));
+        }
+    }
 }

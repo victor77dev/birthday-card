@@ -1,16 +1,17 @@
 export class Song {
-    constructor() {
+    constructor(song='birthday-song-english') {
         this.element =
         '<div class="page">\
             <button id="close" class="hidden">close</button>\
             <video id="video" width="100%" playsinline controls></video>\
             <audio id="audio"></audio>\
         </div>';
+        this.song = song;
     }
 
     init() {
         this.loadVideo('happy-birthday-video');
-        this.loadAudio('birthday-song-english');
+        this.loadAudio(this.song);
         this.playAudioVideo();
     };
 
