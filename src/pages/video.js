@@ -1,16 +1,19 @@
 import {Torch} from '../torch.js';
+import * as Utils from '../utils.js';
 
 export class Video {
-    constructor() {
+    constructor(song='birthday-song-english') {
         this.element =
         '<div class="page">\
             <div id="count-down-container">\
                 <h1 id="count-down"></h1>\
             </div>\
             <div id="close" class="hidden close-icon"></div>\
-            <video id="video" width="100%" class="hidden" playsinline controls></video>\
+            <video id="video" width="100%" class="hidden" playsinline></video>\
+            <div id="replay" class="hidden replay-icon"></div>\
             <audio id="audio"></audio>\
         </div>';
+        this.song = song;
     }
 
     async init() {
@@ -19,7 +22,7 @@ export class Video {
         this.fullscreen(app);
         this.lockOrientation('portrait-primary');
         await this.loadVideo('happy-birthday-video')
-        this.loadAudio('birthday-song-english');
+        this.loadAudio(this.song);
         await this.startCountDown();
         this.playAudioVideo();
     };
@@ -101,8 +104,17 @@ export class Video {
 
         this.timeUpdatedWithTorchSeq = this.timeUpdated.bind(this, torchSeq);
         video.addEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
+        video.addEventListener('ended', this.showNext);
 
         this.projectFullscreen();
+    }
+
+    showNext() {
+        const replay = document.querySelector('#replay');
+        replay.classList.remove('hidden');
+        replay.addEventListener('click', () => {
+            Utils.goTo(new Video());
+        });
     }
 
     loadAudio(song) {
