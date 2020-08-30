@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-.page {
+.page, #video-page {
     min-height: 100%;
     flex-direction: column;
     justify-content: center;
