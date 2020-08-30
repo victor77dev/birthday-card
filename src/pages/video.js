@@ -6,6 +6,7 @@ export class Video {
         '<div id="video-page">\
             <button id="close" class="hidden">close</button>\
             <video id="video" width="100%" playsinline controls></video>\
+            <audio id="audio"></audio>\
         </div>';
     }
 
@@ -14,9 +15,13 @@ export class Video {
         this.addCloseButton();
         this.fullscreen(app);
         this.lockOrientation('portrait-primary');
-        this.startVideo('happy-birthday-video');
-
-        this.video = document.querySelector('#video');
+        this.loadVideo('happy-birthday-video')
+            .then(() => {
+                this.loadAudio('birthday-song-english');
+                this.playAudioVideo();
+            });
+        setTimeout(() => {
+        }, 3000);
     };
 
     fullscreen(ele) {
@@ -36,9 +41,10 @@ export class Video {
         if (orientation && orientation.lock) orientation.lock(target);
     }
 
-    async startVideo(song) {
+    async loadVideo(song) {
+        this.video = document.querySelector('#video');
         const {seq} = await import(`../songs/${song}.js`);
-        this.playVideoWithTorch(`songs/${song}.mp4`, {
+        this.loadVideoWithTorch(`songs/${song}.mp4`, {
             index: 0,
             seq: this.convertToDuration(seq),
         });
@@ -71,7 +77,7 @@ export class Video {
         this.video.classList.remove('project');
     }
 
-    playVideoWithTorch(src, torchSeq) {
+    loadVideoWithTorch(src, torchSeq) {
         const {video} = this;
 
         video.src = src;
@@ -80,7 +86,18 @@ export class Video {
         video.addEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
 
         this.projectFullscreen();
-        video.play();
+    }
+
+    loadAudio(song) {
+        this.audio = document.querySelector('#audio');
+        this.audio.src = `songs/${song}.mp3`;
+    }
+
+    playAudioVideo() {
+        setTimeout(() => {
+            this.audio.play();
+        }, 1000);
+        this.video.play();
     }
 
     closeVideo() {
