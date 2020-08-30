@@ -67,6 +67,8 @@ export class Video {
 
     async loadVideo(song) {
         this.video = document.querySelector('#video');
+        this.video.addEventListener('ended', this.showNext);
+
         const {seq} = await import(`../songs/${song}.js`);
         this.loadVideoWithTorch(`songs/${song}.mp4`, {
             index: 0,
@@ -108,7 +110,6 @@ export class Video {
 
         this.timeUpdatedWithTorchSeq = this.timeUpdated.bind(this, torchSeq);
         video.addEventListener('timeupdate', this.timeUpdatedWithTorchSeq);
-        video.addEventListener('ended', this.showNext);
 
         this.projectFullscreen();
     }
