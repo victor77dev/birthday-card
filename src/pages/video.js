@@ -4,8 +4,11 @@ export class Video {
     constructor() {
         this.element =
         '<div id="video-page">\
+            <div id="count-down-container">\
+                <h1 id="count-down"></h1>\
+            </div>\
             <button id="close" class="hidden">close</button>\
-            <video id="video" width="100%" playsinline controls></video>\
+            <video id="video" width="100%" class="hidden" playsinline controls></video>\
             <audio id="audio"></audio>\
         </div>';
     }
@@ -17,8 +20,26 @@ export class Video {
         this.lockOrientation('portrait-primary');
         await this.loadVideo('happy-birthday-video')
         this.loadAudio('birthday-song-english');
+        await this.startCountDown();
         this.playAudioVideo();
     };
+
+    startCountDown() {
+        return new Promise((resolve) => {
+            const countDown = document.querySelector('#count-down');
+            const countDownContainer = document.querySelector('#count-down-container');
+            let count = 3;
+            countDown.innerHTML = count;
+            const updateCountDown = setInterval(() => {
+                countDown.innerHTML = --count;
+                if (count <= 0) {
+                    clearInterval(updateCountDown);
+                    countDownContainer.classList.add('remove');
+                    resolve();
+                }
+            }, 1000);
+        })
+    }
 
     fullscreen(ele) {
         if (ele.requestFullscreen) return ele.requestFullscreen();
@@ -90,6 +111,7 @@ export class Video {
     }
 
     playAudioVideo() {
+        this.video.classList.remove('hidden');
         setTimeout(() => {
             this.audio.play();
         }, 1000);

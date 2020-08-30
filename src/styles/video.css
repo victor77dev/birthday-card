@@ -7,6 +7,22 @@
     height: 100vw;
 }
 
+#count-down-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#count-down {
+    margin: auto;
+    -webkit-transform: rotate(270deg) scaleX(-1);
+    transform: rotate(270deg) scaleX(-1);
+}
+
+#count-down-container.remove {
+    display: none;
+}
+
 .hidden {
     visibility: hidden;
 }

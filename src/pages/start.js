@@ -17,18 +17,7 @@ export class Start {
     init() {
         const start = document.querySelector('#start');
         start.addEventListener('click', function() {
-            start.disabled = true;
-
-            let count = 3;
-            start.innerHTML = count;
-            const countDown = setInterval(() => {
-                start.innerHTML = --count;
-            }, 1000);
-
-            setTimeout(() => {
-                clearInterval(countDown);
-                Utils.goTo(new Video());
-            }, 3000);
+            Utils.goTo(new Video());
         });
     };
 
