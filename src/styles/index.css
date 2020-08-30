@@ -53,3 +53,9 @@ h1 {
     display: block;
     margin: auto;
 }
+
+.buttons {
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+}

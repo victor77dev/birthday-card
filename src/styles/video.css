@@ -31,9 +31,3 @@
 .shown {
     visibility: visible;
 }
-
-.buttons {
-    height: 20vh;
-    display: flex;
-    flex-direction: column;
-}
