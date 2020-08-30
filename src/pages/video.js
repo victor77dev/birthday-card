@@ -1,4 +1,5 @@
 import {Torch} from '../torch.js';
+import {More} from './more.js';
 import * as Utils from '../utils.js';
 
 export class Video {
@@ -119,6 +120,11 @@ export class Video {
         const replay = document.querySelector('#replay');
         replay.addEventListener('click', () => {
             Utils.goTo(new Video());
+        });
+
+        const more = document.querySelector('#more');
+        more.addEventListener('click', () => {
+            Utils.goTo(new More());
         });
     }
 
