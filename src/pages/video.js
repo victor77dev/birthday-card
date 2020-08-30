@@ -10,18 +10,14 @@ export class Video {
         </div>';
     }
 
-    init() {
+    async init() {
         const app = document.querySelector('#app');
         this.addCloseButton();
         this.fullscreen(app);
         this.lockOrientation('portrait-primary');
-        this.loadVideo('happy-birthday-video')
-            .then(() => {
-                this.loadAudio('birthday-song-english');
-                this.playAudioVideo();
-            });
-        setTimeout(() => {
-        }, 3000);
+        await this.loadVideo('happy-birthday-video')
+        this.loadAudio('birthday-song-english');
+        this.playAudioVideo();
     };
 
     fullscreen(ele) {
