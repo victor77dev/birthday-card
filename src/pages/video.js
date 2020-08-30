@@ -112,10 +112,16 @@ export class Video {
 
     playAudioVideo() {
         this.video.classList.remove('hidden');
-        setTimeout(() => {
-            this.audio.play();
-        }, 1000);
+        this.startAudio = this.startAudio.bind(this);
+        this.video.addEventListener('timeupdate', this.startAudio);
         this.video.play();
+    }
+
+    startAudio(event) {
+        if (event.target.currentTime >= 1.5) {
+            this.audio.play();
+            this.video.removeEventListener('timeupdate', this.startAudio);
+        }
     }
 
     closeVideo() {
